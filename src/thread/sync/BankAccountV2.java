@@ -3,15 +3,15 @@ package thread.sync;
 import util.MyLogger;
 import util.ThreadUtils;
 
-public class BankAccountV1 implements BankAccount {
+public class BankAccountV2 implements BankAccount {
     private volatile int balance;
 
-    public BankAccountV1(int initialBalance) {
+    public BankAccountV2(int initialBalance) {
         this.balance = initialBalance;
     }
 
     @Override
-    public boolean withdraw(int amount) {
+    public synchronized boolean withdraw(int amount) {
         MyLogger.log("withdraw 시작 " + getClass().getSimpleName() + " balance : " + balance);
 
         if (balance < amount) {
@@ -30,7 +30,7 @@ public class BankAccountV1 implements BankAccount {
     }
 
     @Override
-    public int getBalance() {
+    public synchronized int getBalance() {
         return balance;
     }
 }
