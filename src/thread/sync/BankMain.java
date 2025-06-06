@@ -5,7 +5,7 @@ import util.ThreadUtils;
 
 public class BankMain {
     public static void main(String[] args) throws InterruptedException {
-        BankAccount bankAccount = new BankAccountV3(1000);
+        BankAccount bankAccount = new BankAccountV4(1000);
         WithdrawTask withdrawTaskT1 = new WithdrawTask(bankAccount, 800);
         WithdrawTask withdrawTaskT2 = new WithdrawTask(bankAccount, 800);
         Thread t1 = new Thread(withdrawTaskT1, "t1");
